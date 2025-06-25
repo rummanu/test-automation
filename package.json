@@ -1,0 +1,26 @@
+{
+  "name": "test-automation",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test:local": "ENV=local npx playwright test",
+    "test:stage": "ENV=stage npx playwright test",
+    "test:test1": "ENV=test1 npx playwright test",
+    "test:test2": "ENV=test2 npx playwright test",
+    "test": "npx playwright test",
+    "ui": "npx playwright test --headed",
+    "debug": "npx playwright test --debug",
+    "repeat": "npx playwright test --repeat-each 5",
+    "report": "npx playwright show-report"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "devDependencies": {
+    "@faker-js/faker": "^9.7.0",
+    "@playwright/test": "^1.53.0",
+    "@types/node": "^22.15.3",
+    "dotenv": "^16.5.0"
+  }
+}
