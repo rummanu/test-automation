@@ -14,7 +14,7 @@ export class AccessRestrictionPage extends BasePage {
     }
 
     getPageUrl(): string {
-        return "a/workspace-admin/security/access-restrictions";
+        return "/a/workspace-admin/security/access-restrictions";
     }
 
     async navigate(): Promise<void> {
