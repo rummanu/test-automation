@@ -2,7 +2,8 @@ import { Locator, Page, } from '@playwright/test';
 import { BlockedDomainList } from './blocked-domain-list';
 import { AutoApprovedList } from './auto-approved-list';
 import { InviteMembersWhiteList } from './invite-members-white-list';
-import { IpBasedAccessRestrictionSection } from './ip-based-access-restriction-section';
+import { Toggle } from '@enums/toggle';
+import { Switch } from '@components/switch';
 
 export class EmailBasedAccessControl {
     private readonly page: Page;
@@ -40,12 +41,9 @@ export class EmailBasedAccessControl {
         );
     }
 
-    /**
-     * Enable or disable the invite members switch.
-     * @param enable true to enable, false to disable
-     */
-    async enableInviteMembers(enable: boolean): Promise<void> {
-        await this.emailBasedAccessControl.locator('label[for="enable-invite-friend"]').click();
-        await this.page.waitForSelector('.invite-friends .whitelist', { state: enable ? 'visible' : 'hidden' });
+    async enableInviteMembers(toggle:Toggle): Promise<void> {
+        const switchLocator = this.emailBasedAccessControl.locator('#enable-invite-friend');
+        const switchComponent = new Switch(this.page, switchLocator);
+        await switchComponent.switchState(toggle);
     }
 }

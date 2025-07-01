@@ -59,4 +59,14 @@ export abstract class BasePage {
         const texts = await alertLocator.allTextContents();
         return texts.some(s => s.includes(message));
     }
+
+    async hasFieldErrorWith(text: string): Promise<boolean> {
+    const errorLocators = this.page.locator('.invalid-feedback'); // Replace with your INVALID_FEEDBACK selector if different
+    const count = await errorLocators.count();
+    if (count === 0) return false;
+    const texts = await errorLocators.allTextContents();
+    return texts.some(s => s.includes(text));
+}
+
+    
 }

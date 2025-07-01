@@ -2,6 +2,7 @@ import { test, expect } from "@fixture/page-fixtures";
 
 import { AccessRestrictionPage } from "@page/access-restriction-page";
 import { faker } from "@faker-js/faker";
+import { Toggle } from "@enums/toggle";
 
 test.describe("Access Restriction Test", (): void => {
     test.use({ storageState: ".auth/workspace-admin.json" });
@@ -349,7 +350,7 @@ test.describe("Access Restriction Test", (): void => {
         const emailBasedAccessControl = await accessRestrictionPage.getEmailBasedAccessControl();
 
         if (await emailBasedAccessControl.isInviteMembersEnabled() === false) {
-            await emailBasedAccessControl.enableInviteMembers(true);
+            await emailBasedAccessControl.enableInviteMembers(Toggle.ON);
         }
 
         await workspaceHomePage.navigate();
@@ -359,7 +360,7 @@ test.describe("Access Restriction Test", (): void => {
         expect(hasInviteLink).toBe(true);
 
         await accessRestrictionPage.navigate();
-        await emailBasedAccessControl.enableInviteMembers(false);
+        await emailBasedAccessControl.enableInviteMembers(Toggle.OFF);
 
         await workspaceHomePage.navigate();
         userProfileMenu = await workspaceHomePage.getLucidoTopBar().getUserProfileMenu();
@@ -374,7 +375,7 @@ test.describe("Access Restriction Test", (): void => {
         let emailBasedAccessControl = await accessRestrictionPage.getEmailBasedAccessControl();
 
         if (await emailBasedAccessControl.isInviteMembersEnabled() === false) {
-            await emailBasedAccessControl.enableInviteMembers(true);
+            await emailBasedAccessControl.enableInviteMembers(Toggle.ON);
         }
 
         await accessRestrictionPage.navigate();
@@ -395,7 +396,7 @@ test.describe("Access Restriction Test", (): void => {
         let emailBasedAccessControl = await accessRestrictionPage.getEmailBasedAccessControl();
 
         if (await emailBasedAccessControl.isInviteMembersEnabled() === false) {
-            await emailBasedAccessControl.enableInviteMembers(true);
+            await emailBasedAccessControl.enableInviteMembers(Toggle.ON);
         }
 
         await accessRestrictionPage.navigate();
@@ -425,7 +426,7 @@ test.describe("Access Restriction Test", (): void => {
         let emailBasedAccessControl = await accessRestrictionPage.getEmailBasedAccessControl();
 
         if (await emailBasedAccessControl.isInviteMembersEnabled() === false) {
-            await emailBasedAccessControl.enableInviteMembers(true);
+            await emailBasedAccessControl.enableInviteMembers(Toggle.ON);
         }
 
         emailBasedAccessControl = await accessRestrictionPage.getEmailBasedAccessControl();
@@ -445,7 +446,7 @@ test.describe("Access Restriction Test", (): void => {
         let emailBasedAccessControl = await accessRestrictionPage.getEmailBasedAccessControl();
 
         if (await emailBasedAccessControl.isInviteMembersEnabled() === false) {
-            await emailBasedAccessControl.enableInviteMembers(true);
+            await emailBasedAccessControl.enableInviteMembers(Toggle.ON);
         }
 
         emailBasedAccessControl = await accessRestrictionPage.getEmailBasedAccessControl();
@@ -465,7 +466,7 @@ test.describe("Access Restriction Test", (): void => {
         let emailBasedAccessControl = await accessRestrictionPage.getEmailBasedAccessControl();
 
         if (await emailBasedAccessControl.isInviteMembersEnabled() === false) {
-            await emailBasedAccessControl.enableInviteMembers(true);
+            await emailBasedAccessControl.enableInviteMembers(Toggle.ON);
         }
 
         await accessRestrictionPage.navigate();
@@ -501,7 +502,7 @@ test.describe("Access Restriction Test", (): void => {
 
         emailBasedAccessControl = await accessRestrictionPage.getEmailBasedAccessControl();
         if (await emailBasedAccessControl.isInviteMembersEnabled() === false) {
-            await emailBasedAccessControl.enableInviteMembers(true);
+            await emailBasedAccessControl.enableInviteMembers(Toggle.ON);
         }
 
         const inviteMembersWhiteList = await emailBasedAccessControl.getInviteMembersWhiteList();
