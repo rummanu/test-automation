@@ -18,13 +18,13 @@ export default defineConfig({
   workers: process.env.CI ? 1 : 1,
   reporter: 'html',
   use: {
-    baseURL: process.env.MEMBER_MANAGEMENT_WORKSPACE_BASE_URL,
+    baseURL: process.env.ADMIN_PANEL_WORKSPACE_BASE_URL || 'http://localhost:3000',
     httpCredentials:
-      process.env.MEMBER_MANAGEMENT_WORKSPACE_ADMIN_EMAIL &&
-        process.env.MEMBER_MANAGEMENT_WORKSPACE_ADMIN_PASSWORD
+      process.env.ADMIN_PANEL_WORKSPACE_ADMIN_EMAIL &&
+        process.env.ADMIN_PANEL_WORKSPACE_ADMIN_PASSWORD
         ? {
-          username: process.env.MEMBER_MANAGEMENT_WORKSPACE_ADMIN_EMAIL,
-          password: process.env.MEMBER_MANAGEMENT_WORKSPACE_ADMIN_PASSWORD,
+          username: process.env.ADMIN_PANEL_WORKSPACE_ADMIN_EMAIL,
+          password: process.env.ADMIN_PANEL_WORKSPACE_ADMIN_PASSWORD,
         }
         : undefined,
     trace: "on-first-retry",
