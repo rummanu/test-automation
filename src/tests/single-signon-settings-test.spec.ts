@@ -4,7 +4,7 @@ import { Toggle } from '@enums/toggle';
 import { SinglesignonType } from '@enums/single-signon-type';
 import { faker } from '@faker-js/faker';
 
-test.describe("Access Restriction Test", (): void => {
+test.describe("Single SignOn Settings Test", (): void => {
     test.use({ storageState: ".auth/workspace-admin.json" });
     let singleSignOnSettingsPage: SingleSignOnSettingsPage;
 

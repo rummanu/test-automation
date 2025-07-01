@@ -6,6 +6,7 @@ import * as dotenv from "dotenv";
 import * as path from "path";
 import { AccessRestrictionPage } from "@page/access-restriction-page";
 import { SingleSignOnSettingsPage } from "@page/single-signon-settings-page";
+import { GdprPage } from "@page/gdpr-page"; 
 
 const envArg = process.env.ENV || 'local';
 let envFile = 'credentials.env';
@@ -19,6 +20,7 @@ type PageFixtures = {
     loginPage: LoginPage;
     accessRestrictionPage: AccessRestrictionPage;
     singleSignOnSettingsPage: SingleSignOnSettingsPage;
+    gdprPage: GdprPage;
 };
 
 export const test = base.extend<PageFixtures>({
@@ -40,6 +42,11 @@ export const test = base.extend<PageFixtures>({
     singleSignOnSettingsPage: async ({ page }, use) => {
         const singleSignOnSettingsPage = new SingleSignOnSettingsPage(page);
         await use(singleSignOnSettingsPage);
+    },
+
+    gdprPage: async ({ page }, use) => {
+        const gdprPage = new GdprPage(page);
+        await use(gdprPage);
     }
 });
 
