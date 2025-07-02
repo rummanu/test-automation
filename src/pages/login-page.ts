@@ -1,9 +1,9 @@
 
 import { Page } from "@playwright/test";
-import {BasePage} from "@page/base-page";
 import {WorkspaceHomePage} from "@page/workspace-home-page";
+import { BaseAuthenticationPage } from "@page/base-authentication-page";
 
-export class LoginPage extends BasePage {
+export class LoginPage extends BaseAuthenticationPage {
     constructor(page: Page) {
         super(page);
     }

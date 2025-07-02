@@ -7,6 +7,7 @@ import * as path from "path";
 import { AccessRestrictionPage } from "@page/access-restriction-page";
 import { SingleSignOnSettingsPage } from "@page/single-signon-settings-page";
 import { GdprPage } from "@page/gdpr-page"; 
+import { SocialLoginSettingsPage } from "@page/social-login-settings-page";
 
 const envArg = process.env.ENV || 'local';
 let envFile = 'credentials.env';
@@ -21,6 +22,7 @@ type PageFixtures = {
     accessRestrictionPage: AccessRestrictionPage;
     singleSignOnSettingsPage: SingleSignOnSettingsPage;
     gdprPage: GdprPage;
+    socialLoginSettingsPage: SocialLoginSettingsPage; // Optional for backward compatibility
 };
 
 export const test = base.extend<PageFixtures>({
@@ -47,6 +49,11 @@ export const test = base.extend<PageFixtures>({
     gdprPage: async ({ page }, use) => {
         const gdprPage = new GdprPage(page);
         await use(gdprPage);
+    },
+
+    socialLoginSettingsPage: async ({ page }, use) => {
+        const socialLoginSettingsPage = new SocialLoginSettingsPage(page);
+        await use(socialLoginSettingsPage);
     }
 });
 

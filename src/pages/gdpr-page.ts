@@ -90,4 +90,22 @@ export class GdprPage extends BasePage {
         await saveButton.click();
         await this.page.waitForLoadState('networkidle');
     }
+
+    async getFirstnameInputField(): Promise<this> {
+        const inputSelector = this.page.locator('#contactFirstName');
+        await inputSelector.waitFor({ state: 'visible' });
+        return this;
+    }
+
+    async getLastnameInputField(): Promise<this> {
+        const inputSelector = this.page.locator('#contactLastName');
+        await inputSelector.waitFor({ state: 'visible' });
+        return this;
+    }
+
+    async getEmailInputField(): Promise<this> {
+        const inputSelector = this.page.locator('#contactEmailAddress');
+        await inputSelector.waitFor({ state: 'visible' });
+        return this;    
+    }
 }

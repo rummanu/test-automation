@@ -14,4 +14,9 @@ export class UserProfileMenu {
         return await inviteMembersLink.isVisible();
     }
 
+    async clickLogout(): Promise<void> {
+        const logoutButton = this.userprofileMenu.getByTestId('logout-link');
+        await logoutButton.click();
+    }
+
 }

@@ -1,3 +1,4 @@
+import { TopBar } from "@components/topbar";
 import { Page } from "@playwright/test";
 
 export abstract class BasePage {
@@ -68,5 +69,10 @@ export abstract class BasePage {
     return texts.some(s => s.includes(text));
 }
 
-    
+async getTopbar(): Promise<TopBar> {
+    // Returns the text content of the topbar
+    const topbar = this.page.locator('#universal-top-bar');
+    await topbar.waitFor({ state: 'visible' });
+    return new TopBar(this.page, topbar);
+}
 }
